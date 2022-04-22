@@ -1,37 +1,18 @@
-import React,
-    {
-    useEffect,
-    useState
+.services-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
 }
 
-from 'react';
-import Service from '../Service/Service';
-import './Services.css';
-
-const Services=()=> {
-
-    const [services,
-    setServices]=useState([]);
-
-    useEffect(()=> {
-            fetch('services.json') .then(res=> res.json()) .then(data=> setServices(data));
-        }
-
-        , []) return (<div id="services"className='container'> <div className="row"> <h1 className='text-primary text-center mt-5'> Our Services</h1> <div className="services-container"> {
-            services.map(service=> <Service key= {
-                    service.id
-                }
-
-                service= {
-                    service
-                }
-
-                > </Service>)
-        }
-
-        </div> </div> </div>);
+/* make services responsive */
+@media only screen and (max-width:576px) {
+    .services-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
-;
-
-export default Services;
+@media only screen and (min-width: 577px) and (max-width: 992px) {
+    .services-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
